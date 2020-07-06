@@ -11,19 +11,36 @@ const puppeteer = require('puppeteer');
       waitUntil: 'networkidle2'
     });
 
-    await page.waitForSelector('main');
-    const card = await page.$("div.Polaris-Card > div > img");
+    await page.click("span._1rA3U");
+    console.log('clicked');
 
 
 
+    await page.waitForSelector('h2');
 
-    card.click();
-    // console.log('premuto');
+
+
+    const name = await page.$eval('.2dskn > h2', el => el.innerText);
+    console.log(name);
+    // const cards = await page.$$("span._1rA3U");
     //
-    const title = await page.$("div.Polaris-Card > div > div > div:nth-child(2) > h2");
-    console.log(title.innerHTML);
-
-
+    //
+    // for (const card of cards) {
+    //   card.click();
+    //   console.log('premuto');
+    //
+    //
+    //
+    //   //
+    //   const titles = await page.$$("h2._12oDh");
+    //   //   ');
+    //   for (const title of titles) {
+    //     const name = await title.$eval('h2._12oDh', h2 => h2.innerText);
+    //     console.log('name', name);
+    //   }
+    // for (const title of titles) {
+    //   console.log(title.innerHTML);
+    // }
     // cards[0].click();
     // await page.waitForSelector('.Polaris-Card');
     // const lis = await page.$$('.Polaris-Card');
