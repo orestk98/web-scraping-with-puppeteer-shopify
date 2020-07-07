@@ -1,10 +1,18 @@
 const puppeteer = require('puppeteer');
 
+
+
+let myArrayOfTitles=[];
 (async () => {
-  const browser = await puppeteer.launch();
+
+  const browser = await puppeteer.launch({headless: false});
   const page = await browser.newPage();
-  const url="https://marketingplatform.google.com/about/partners/find-a-partner?utm_source=marketingplatform.google.com&utm_medium=et&utm_campaign=marketingplatform.google.com%2Fabout%2Fpartners%2F"
+   // await page.setViewport({width: 1920, height: 1080});
+  const url="https://experts.shopify.com/"
   await page.goto(url);
+
+/////////////////////////////////// google-marketing
+  /*
 await page.waitFor('h3.title');
 await page.waitFor('div.logo-wrapper a img');
 await page.waitFor('div.inner-container')
@@ -21,11 +29,29 @@ const partners = await page.evaluate(()=>
 
 console.log(partners);
 
+*/
 
-  await browser.close();
+////////////////////////////    shopify
+
+
+await page.waitFor('div._17BF0 a');
+const click = await page.evaluate(() => Array.from(document.querySelectorAll('div._17BF0 a'))[0].click())
+
+await page.waitFor('div._3iz-t');
+const experts = await page.evaluate(()=>
+ Array.from(document.querySelectorAll('div._3iz-t'))
+ .map(expert =>({
+  name: expert.querySelector('h2._12oDh._4KkyP').innerText,
+  indirizzo: expert.querySelector('span.Polaris-TextStyle--variationSubdued').innerText,
+  startingPrice: expert.querySelector('div._3657d').innerText,
+})) );
+console.log(experts);
+// h2._12oDh._4KkyP')).map(h2 => h2.innerText))
+//console.log(titles);
+         // myArrayOfTitles= titles;
+         // console.log("mio-array:", myArrayOfTitles);
+// await browser.close();
 })();
-
-
 
 
 
