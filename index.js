@@ -44,6 +44,9 @@ const experts = await page.evaluate(()=>
   name: expert.querySelector('h2._12oDh._4KkyP').innerText,
   indirizzo: expert.querySelector('span.Polaris-TextStyle--variationSubdued').innerText,
   startingPrice: expert.querySelector('div._3657d').innerText,
+  jobsCompleted: expert.querySelector('div.Polaris-Stack.Polaris-Stack--spacingTight.Polaris-Stack--alignmentCenter').innerText,
+  rating: expert.querySelectorAll('div.Polaris-Stack.Polaris-Stack--spacingExtraTight.Polaris-Stack--alignmentCenter div.Polaris-Stack__Item').innerText,
+
 })) );
 console.log(experts);
 // h2._12oDh._4KkyP')).map(h2 => h2.innerText))
