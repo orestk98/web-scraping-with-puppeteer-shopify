@@ -49,11 +49,7 @@ const experts = await page.evaluate(()=>
 
 })) );
 console.log(experts);
-// h2._12oDh._4KkyP')).map(h2 => h2.innerText))
-//console.log(titles);
-         // myArrayOfTitles= titles;
-         // console.log("mio-array:", myArrayOfTitles);
-// await browser.close();
+
 })();
 
 
